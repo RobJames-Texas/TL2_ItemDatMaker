@@ -23,7 +23,7 @@ namespace TL2_ItemDatMaker.Models
         {
             get
             {
-                return string.Format(@"media\units\items\{0}{1}.DAT", UnitType.BaseFile, Rarity.BaseSuffix);
+                return string.Format(@"media\units\items\{0}{1}.DAT", UnitType.BaseFile.ToUpper(), Rarity.BaseSuffix.ToUpper());
             }
         }
 
@@ -60,7 +60,7 @@ namespace TL2_ItemDatMaker.Models
     <STRING>MESHFILE:{MeshFile}
     <STRING>BASEFILE:{BaseFile}
     <STRING>UNIT_GUID:{Guid.ToString()}
-    <STRING>UNITTYPE:{UnitType.Type}
+    <STRING>UNITTYPE:{Rarity.Level.ToUpper()} {UnitType.Type}
     <STRING>NAME:{Name}
     <INTEGER>LEVEL:{Level}
     <INTEGER>MINLEVEL:{MinLevel}
