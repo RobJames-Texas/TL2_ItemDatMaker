@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TL2_ItemDatMaker", "TL2_ItemDatMaker\TL2_ItemDatMaker.csproj", "{2322B06E-F2D5-4DB8-9A8F-64A982F9D840}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TL2_ItemDatMaker", "TL2_ItemDatMaker\TL2_ItemDatMaker.csproj", "{2322B06E-F2D5-4DB8-9A8F-64A982F9D840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TL2_ItemDatMakerTests", "TL2_ItemDatMakerTests\TL2_ItemDatMakerTests.csproj", "{9DA19535-05C4-4CBD-8D82-EC313F92EC79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2322B06E-F2D5-4DB8-9A8F-64A982F9D840}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2322B06E-F2D5-4DB8-9A8F-64A982F9D840}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2322B06E-F2D5-4DB8-9A8F-64A982F9D840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DA19535-05C4-4CBD-8D82-EC313F92EC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DA19535-05C4-4CBD-8D82-EC313F92EC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DA19535-05C4-4CBD-8D82-EC313F92EC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DA19535-05C4-4CBD-8D82-EC313F92EC79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

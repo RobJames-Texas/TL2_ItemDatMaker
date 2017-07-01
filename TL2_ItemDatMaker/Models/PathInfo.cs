@@ -30,7 +30,18 @@ namespace TL2_ItemDatMaker.Models
 
             ItemType = folders.Last();
 
+            if (string.IsNullOrWhiteSpace(Root) || string.IsNullOrWhiteSpace(Resource) || string.IsNullOrWhiteSpace(ItemType))
+            {
+                throw new ArgumentException("Invalid Path");
+            }
+
+            if (UnitType.List().Where(u => u.MeshFolder == ItemType).Count() == 0)
+            {
+                throw new ArgumentException("Invalid Item Type Path");
+            }
+
             BaseDatPath = string.Join(Path.DirectorySeparatorChar.ToString(), new string[] { "MEDIA", "UNITS", "ITEMS" });
+
         }
 
         private string Root { get; set; }

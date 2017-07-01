@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>    
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.1.11" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.1.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestMeshes\MEDIA\MODELS\WEAPONS\_JUNK\" />
+    <Folder Include="TestMeshes\MEDIA\MODELS\WEAPONS\_STAVES\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TL2_ItemDatMaker\TL2_ItemDatMaker.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestMeshes\MEDIA\MODELS\WEAPONS\_JUNK\staffJK.MESH">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestMeshes\MEDIA\MODELS\WEAPONS\_JUNK\staff_model_01.MESH">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestMeshes\MEDIA\MODELS\WEAPONS\_STAVES\staffJK.MESH">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestMeshes\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestMeshes\staffJK.MESH">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestMeshes\staff_model_01.MESH">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+
+</Project>

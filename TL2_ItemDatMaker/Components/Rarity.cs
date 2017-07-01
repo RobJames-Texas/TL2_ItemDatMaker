@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace TL2_ItemDatMaker.Components
 {
@@ -12,7 +12,6 @@ namespace TL2_ItemDatMaker.Components
 
         public string BaseSuffix { get; private set; }
 
-        //        public enum Rarity { Normal, Magic, Unique, Legendary };
         private Rarity(string level, string nameLetter, string baseSuffix)
         {
             Level = level;
@@ -27,6 +26,11 @@ namespace TL2_ItemDatMaker.Components
         public static Rarity Unique = new Rarity("Unique", "u", "_unique");
 
         public static Rarity Legendary = new Rarity("Legendary", "l", "_unique");
+
+        public static Rarity GetByLevel(string level)
+        {
+            return Rarity.List().Where(r => r.Level.ToLower() == level.ToLower()).FirstOrDefault();
+        }
 
         public static IEnumerable<Rarity> List()
         {
