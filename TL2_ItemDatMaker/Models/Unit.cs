@@ -4,7 +4,7 @@ namespace TL2_ItemDatMaker.Models
 {
     public class Unit
     {
-        public Unit(string resourceDirectory, string meshFile, UnitType unitType, string name, int level, Rarity rarity)
+        public Unit(string resourceDirectory, string meshFile, UnitType unitType, string name, int level, Rarity rarity, long guid)
         {
             ResourceDirectory = resourceDirectory;
             MeshFile = meshFile;
@@ -12,6 +12,7 @@ namespace TL2_ItemDatMaker.Models
             Name = name;
             Level = level;
             Rarity = rarity;
+            Guid = guid;
         }
 
         public string ResourceDirectory { get; private set; }
@@ -34,6 +35,8 @@ namespace TL2_ItemDatMaker.Models
 
         public int Level { get; private set; }
 
+        public long Guid { get; private set; }
+
         public int MinLevel
         {
             get
@@ -53,14 +56,15 @@ namespace TL2_ItemDatMaker.Models
         public string ToDat()
         {
             string ouput = $@"[UNIT]
-<STRING>RESOURCEDIRECTORY:{ResourceDirectory}
-<STRING>MESHFILE:{MeshFile}
-<STRING>BASEFILE:{BaseFile}
-<STRING>UNITTYPE:{UnitType.Type}
-<STRING>NAME:{Name}
-<INTEGER>LEVEL:{Level}
-<INTEGER>MINLEVEL:{MinLevel}
-<INTEGER>MAXLEVEL:{MaxLevel}
+    <STRING>RESOURCEDIRECTORY:{ResourceDirectory}
+    <STRING>MESHFILE:{MeshFile}
+    <STRING>BASEFILE:{BaseFile}
+    <STRING>UNIT_GUID:{Guid.ToString()}
+    <STRING>UNITTYPE:{UnitType.Type}
+    <STRING>NAME:{Name}
+    <INTEGER>LEVEL:{Level}
+    <INTEGER>MINLEVEL:{MinLevel}
+    <INTEGER>MAXLEVEL:{MaxLevel}
 [/UNIT]";
 
             return ouput;

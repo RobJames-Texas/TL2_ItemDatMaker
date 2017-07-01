@@ -17,24 +17,26 @@ namespace TL2_ItemDatMakerTests
             string name = "test";
             int itemLevel = 2;
             Rarity rarity = Rarity.Normal;
+            long guid = 2013103151278660001;
 
             string expectedBaseFile = @"media\units\items\BASE_STAFF.DAT";
             int expectedMinLevel = 0;
             int expectedMaxLevel = 5;
 
             string expectedDatContents = @"[UNIT]
-<STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
-<STRING>MESHFILE:staff_model_01.MESH
-<STRING>BASEFILE:media\units\items\BASE_STAFF.DAT
-<STRING>UNITTYPE:STAFF
-<STRING>NAME:test
-<INTEGER>LEVEL:2
-<INTEGER>MINLEVEL:0
-<INTEGER>MAXLEVEL:5
+    <STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
+    <STRING>MESHFILE:staff_model_01.MESH
+    <STRING>BASEFILE:media\units\items\BASE_STAFF.DAT
+    <STRING>UNIT_GUID:2013103151278660001
+    <STRING>UNITTYPE:STAFF
+    <STRING>NAME:test
+    <INTEGER>LEVEL:2
+    <INTEGER>MINLEVEL:0
+    <INTEGER>MAXLEVEL:5
 [/UNIT]";
 
 
-            Unit actual = new Unit(resource, meshFile, unitType, name, itemLevel, rarity);
+            Unit actual = new Unit(resource, meshFile, unitType, name, itemLevel, rarity, guid);
 
             Assert.AreEqual(expectedBaseFile, actual.BaseFile);
             Assert.AreEqual(expectedMinLevel, actual.MinLevel);

@@ -28,7 +28,9 @@ namespace TL2_ItemDatMaker
 
                 string name = ItemNameGenerator.Create(unitType, rarity, arguments.NameTag, arguments.ItemLevel);
 
-                Unit unit = new Unit(pathInfo.Resource, pathInfo.MeshFile, unitType, name, arguments.ItemLevel, rarity);
+                long guid = TorchlightGuid.Generate();
+
+                Unit unit = new Unit(pathInfo.Resource, pathInfo.MeshFile, unitType, name, arguments.ItemLevel, rarity, guid);
 
                 string destination = pathInfo.CreateFullDatPath(unitType, name);
 
