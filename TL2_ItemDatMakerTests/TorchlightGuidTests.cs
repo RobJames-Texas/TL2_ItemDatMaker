@@ -1,7 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TL2_ItemDatMaker.Components;
 
 namespace TL2_ItemDatMakerTests

@@ -9,7 +9,7 @@ namespace TL2_ItemDatMakerTests
     public class PathInfoTests
     {
         [TestMethod]
-        public void StaffWithCorrectPathShouldFillInProperties()
+        public void ShouldFillInWithStaffPropertiesWhenPathIsGood()
         {
             string meshFile = @".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH";
             PathInfo pathInfo = new PathInfo(meshFile);
@@ -28,7 +28,7 @@ namespace TL2_ItemDatMakerTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void NoPathShouldFail()
+        public void ShouldFailOnNoPath()
         {
             string meshFile = @"";
             PathInfo pathInfo = new PathInfo(meshFile);
@@ -36,7 +36,7 @@ namespace TL2_ItemDatMakerTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void FileOnlyShouldFail()
+        public void ShouldFailOnFileOnly()
         {
             string meshFile = @"staff_model_01.MESH";
             PathInfo pathInfo = new PathInfo(meshFile);
@@ -44,7 +44,7 @@ namespace TL2_ItemDatMakerTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void BadItemTypeShouldFail()
+        public void ShouldFailOnBadItemType()
         {
             string meshFile = @".\MEDIA\MODELS\WEAPONS\_JUNK\staff_model_01.MESH";
             PathInfo pathInfo = new PathInfo(meshFile);
