@@ -5,6 +5,10 @@ http://torchmodders.com/forums/tips-tools/(request)-item-unit-file-maker-script-
 
 ## BETA!!
 
+v0.9.0
+
+Releases: https://github.com/Vkoslak/TL2_ItemDatMaker/releases
+
 Written in dot net core with Visual Studio 2017.
 
 ### Usage:
