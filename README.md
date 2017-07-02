@@ -3,20 +3,24 @@ Generate DAT files for items in torchlight 2
 
 http://torchmodders.com/forums/tips-tools/(request)-item-unit-file-maker-script-624/?topicseen
 
-Not complete yet.
+## BETA!!
 
 Written in dot net core with Visual Studio 2017.
 
-run with "dotnet .\TL2_ItemDatMaker.dll"
-options:
+### Usage:
+
+##### Stand Alone versions:
+* Windows 7 and up 32/64bit **"TL2_ItemDatMaker.exe"**
+* OSX 10.10 x64 and up **"TL2_ItemDatMaker"**
+
+Either with the options below, *or* drag the mesh file in your mod folder over the executable and the application will ask for the rest of the options.
+
+### options:
 
 -m | --3dmodel          Meshfile and full path. (required)
--r | --itemrarity               Item Rarity: Normal, Magic (Blue), Unique or Legendary. (required)
+-r | --itemrarity       Item Rarity: Normal, Magic (Blue), Unique or Legendary. (required)
 -t | --tag              Tag to be appended after item type. (required)
--l | --itemlevel                Base level of the item. Minimum of 3. (required)
--a | --altclones                Make Alt Clones.
+-l | --itemlevel        Base level of the item. Minimum of 3. (required)
+-a | --altclones        Make Alt Clones.
 -n | --ngclones         Make NG+ Clones.
 
-Clones not implemented yet.
-
-Consider this very early alpha.
