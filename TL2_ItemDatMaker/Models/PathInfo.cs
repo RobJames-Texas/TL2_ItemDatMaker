@@ -56,8 +56,8 @@ namespace TL2_ItemDatMaker.Models
 
         public string CreateFullDatPath(UnitType unitType, string name)
         {
-            string[] pieces = new string[] { Root, BaseDatPath, unitType.Type, name + ".DAT" };
-            return string.Join(Path.DirectorySeparatorChar.ToString(), pieces);
+            string[] pieces = new string[] { Root, BaseDatPath, unitType.UnitFolder, name + ".DAT" };
+            return string.Join(Path.DirectorySeparatorChar.ToString(), pieces).ToUpper();
         }
     }
 }

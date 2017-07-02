@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using TL2_ItemDatMaker.Components;
 
 namespace TL2_ItemDatMaker.Models
 {
     public class Unit
     {
-        public Unit(string resourceDirectory, string meshFile, UnitType unitType, string name, int level, Rarity rarity, long guid)
+        public Unit(string resourceDirectory, string meshFile, UnitType unitType, string name, int level, Rarity rarity, long guid, int? levelRequired = null)
         {
             ResourceDirectory = resourceDirectory;
             MeshFile = meshFile;
@@ -15,10 +14,11 @@ namespace TL2_ItemDatMaker.Models
             Level = level;
             Rarity = rarity;
             Guid = guid;
-            BaseFile = string.Format(@"media\units\items\{0}{1}.DAT", UnitType.BaseFile.ToUpper(), Rarity.BaseSuffix.ToUpper());
+            BaseFile = string.Format(@"media\units\items\{0}\{1}{2}.DAT", UnitType.UnitFolder.ToLower(), UnitType.BaseFile.ToUpper(), Rarity.BaseSuffix.ToUpper());
+            LevelRequired = levelRequired;
         }
 
-        private Unit(string resourceDirectory, string meshFile, UnitType unitType, string name, int level, Rarity rarity, long guid, string baseFile)
+        private Unit(string resourceDirectory, string meshFile, UnitType unitType, string name, int level, Rarity rarity, long guid, string baseItemName, int? levelRequired = null)
         {
             ResourceDirectory = resourceDirectory;
             MeshFile = meshFile;
@@ -27,7 +27,8 @@ namespace TL2_ItemDatMaker.Models
             Level = level;
             Rarity = rarity;
             Guid = guid;
-            BaseFile = baseFile;
+            BaseFile = string.Format(@"media\units\items\{0}\{1}.DAT", UnitType.UnitFolder.ToLower(), baseItemName);
+            LevelRequired = levelRequired;
         }
 
         public string ResourceDirectory { get; private set; }
@@ -45,6 +46,8 @@ namespace TL2_ItemDatMaker.Models
         public int Level { get; private set; }
 
         public long Guid { get; private set; }
+
+        public int? LevelRequired { get; private set; }
 
         public int MinLevel
         {
@@ -64,7 +67,7 @@ namespace TL2_ItemDatMaker.Models
 
         public string ToDat()
         {
-            string ouput = $@"[UNIT]
+            string template = $@"[UNIT]
     <STRING>RESOURCEDIRECTORY:{ResourceDirectory}
     <STRING>MESHFILE:{MeshFile}
     <STRING>BASEFILE:{BaseFile}
@@ -74,9 +77,10 @@ namespace TL2_ItemDatMaker.Models
     <INTEGER>LEVEL:{Level}
     <INTEGER>MINLEVEL:{MinLevel}
     <INTEGER>MAXLEVEL:{MaxLevel}
-[/UNIT]";
+";
+            string levelRequired = LevelRequired.HasValue ? "    <INTEGER>LEVEL_REQUIRED:" + LevelRequired.Value + "\n" : string.Empty;
 
-            return ouput;
+            return template + levelRequired + "[/UNIT]";
         }
 
         public static IEnumerable<Unit> GenerateVariations(PathInfo pathInfo, UnitType unitType, Rarity rarity, int itemLevel, string name, bool altClones, bool ngClones)
@@ -93,16 +97,20 @@ namespace TL2_ItemDatMaker.Models
                 foreach (string post in altPost)
                 {
                     newLevel += altLevel;
-                    units.Add(new Unit(pathInfo.Resource, pathInfo.MeshFile, unitType, name + post, newLevel, rarity, TorchlightGuid.Generate(), units.First().BaseFile));
+                    units.Add(new Unit(pathInfo.Resource, pathInfo.MeshFile, unitType, name + post, newLevel, rarity, TorchlightGuid.Generate(), name));
                 }
             }
 
             if (ngClones)
             {
-                List<Unit> originalUnits = units;
+                IEnumerable<Unit> originalUnits = units.ToArray();
                 foreach (Unit unit in originalUnits)
                 {
-                    //units.Add()
+                    IEnumerable<NgLevel> ngLevels = NgLevel.Available(unit.Level);
+                    foreach(NgLevel ngLevel in ngLevels)
+                    {
+                        units.Add(new Unit(pathInfo.Resource, pathInfo.MeshFile, unitType, unit.Name + ngLevel.Suffix, ngLevel.CalcNgLevel(unit.Level), rarity, TorchlightGuid.Generate(), name, ngLevel.LevelRequired));
+                    }
                 }
             }
 

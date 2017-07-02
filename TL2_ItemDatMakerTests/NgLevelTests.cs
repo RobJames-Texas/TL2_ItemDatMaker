@@ -55,5 +55,32 @@ namespace TL2_ItemDatMakerTests
 
             actual.ShouldAllBeEquivalentTo(expected);
         }
+
+        [TestMethod]
+        public void ShouldBeNgLevel60()
+        {
+            int expected = 60;
+            int actual = NgLevel.One.CalcNgLevel(15);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ShouldBeNgLevel87()
+        {
+            int expected = 87;
+            int actual = NgLevel.Two.CalcNgLevel(15);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ShouldBeNgLevel105()
+        {
+            int expected = 105;
+            int actual = NgLevel.Three.CalcNgLevel(15);
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

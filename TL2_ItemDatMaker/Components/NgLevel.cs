@@ -16,29 +16,33 @@ namespace TL2_ItemDatMaker.Components
 
         public int? LevelRequired { get; private set; }
 
-        private Func<int, int> NgLevelCalcMath { get; set; }
+        public string Suffix { get; private set; }
+
+        private NgLevelCalcDelegate _ngLevelCalcMath { get; set; }
+
+        private delegate decimal NgLevelCalcDelegate(decimal level);
 
         public int CalcNgLevel(int itemLevel)
         {
-            //return MinItemLevel + itemLevel / 50 * MaxItemLevel - MinItemLevel;
-            return NgLevelCalcMath(itemLevel);
+            return (int)Math.Round(_ngLevelCalcMath(itemLevel), MidpointRounding.AwayFromZero);
         }
 
-        private NgLevel(int minItemLevel, int maxItemLevel, int minNgLevel, int maxNgLevel, int? levelRequired, Func<int, int> ngLevelCalcMath)
+        private NgLevel(int minItemLevel, int maxItemLevel, int minNgLevel, int maxNgLevel, string suffix, int? levelRequired, NgLevelCalcDelegate ngLevelCalcMath)
         {
             MinItemLevel = minItemLevel;
             MaxItemLevel = maxItemLevel;
             MinNgLevel = minNgLevel;
             MaxNgLevel = maxNgLevel;
+            Suffix = suffix;
             LevelRequired = levelRequired;
-            NgLevelCalcMath = ngLevelCalcMath;
+            _ngLevelCalcMath = ngLevelCalcMath;
         }
 
-        public static NgLevel One = new NgLevel(51, 80, 51, 80, null, (int level) => { return 51 + level / 50 * 80 - 51; });
+        public static NgLevel One = new NgLevel(51, 80, 51, 80, "NG+", null, (level) => { return 51M + ((level / 50M) * (80M - 51M)); });
 
-        public static NgLevel Two = new NgLevel(81, 100, 81, 100, null, (int level) => { return 81 + level / 50 * 100 - 81; });
+        public static NgLevel Two = new NgLevel(81, 100, 81, 100, "NG+2", null, (level) => { return 81M + ((level / 50M) * (100M - 81M)); });
 
-        public static NgLevel Three = new NgLevel(101, 120, 99, 999, 101, (int level) => { return 105; });
+        public static NgLevel Three = new NgLevel(101, 120, 99, 999, "NG+3", 101, (level) => { return 105M; });
 
         public static IEnumerable<NgLevel> Available(int itemLevel)
         {
