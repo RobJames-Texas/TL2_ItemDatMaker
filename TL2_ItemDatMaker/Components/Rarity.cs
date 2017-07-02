@@ -32,6 +32,11 @@ namespace TL2_ItemDatMaker.Components
             return Rarity.List().Where(r => r.Level.ToLower() == level.ToLower()).FirstOrDefault();
         }
 
+        public static Rarity GetByLetter(string letter)
+        {
+            return Rarity.List().Where(r => r.NameLetter.ToLower() == letter.ToLower()).FirstOrDefault();
+        }
+
         public static IEnumerable<Rarity> List()
         {
             return new Rarity[]
