@@ -14,7 +14,7 @@ namespace TL2_ItemDatMakerTests
         public void ShouldSetupNormalStaff()
         {
             string resource = @"MEDIA/MODELS/WEAPONS/_STAVES";
-            string meshFile = "staff_model_01.MESH";
+            string meshFile = "staff_model_01";
             UnitType unitType = UnitType.Staves;
             string name = "test";
             int itemLevel = 2;
@@ -27,7 +27,7 @@ namespace TL2_ItemDatMakerTests
 
             string expectedDatContents = @"[UNIT]
     <STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
-    <STRING>MESHFILE:staff_model_01.MESH
+    <STRING>MESHFILE:staff_model_01
     <STRING>BASEFILE:media\units\items\staves\BASE_STAFF.DAT
     <STRING>UNIT_GUID:2013103151278660001
     <STRING>UNITTYPE:NORMAL STAFF
@@ -50,7 +50,7 @@ namespace TL2_ItemDatMakerTests
         public void ShouldSetupMagicStaff()
         {
             string resource = @"MEDIA/MODELS/WEAPONS/_STAVES";
-            string meshFile = "staff_model_01.MESH";
+            string meshFile = "staff_model_01";
             UnitType unitType = UnitType.Staves;
             string name = "test2";
             int itemLevel = 2;
@@ -63,7 +63,7 @@ namespace TL2_ItemDatMakerTests
 
             string expectedDatContents = @"[UNIT]
     <STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
-    <STRING>MESHFILE:staff_model_01.MESH
+    <STRING>MESHFILE:staff_model_01
     <STRING>BASEFILE:media\units\items\staves\BASE_STAFF_MAGIC.DAT
     <STRING>UNIT_GUID:2013103151278660001
     <STRING>UNITTYPE:MAGIC STAFF
@@ -86,7 +86,7 @@ namespace TL2_ItemDatMakerTests
         public void ShouldSetupUniqueStaff()
         {
             string resource = @"MEDIA/MODELS/WEAPONS/_STAVES";
-            string meshFile = "staff_model_01.MESH";
+            string meshFile = "staff_model_01";
             UnitType unitType = UnitType.Staves;
             string name = "test3";
             int itemLevel = 2;
@@ -99,7 +99,7 @@ namespace TL2_ItemDatMakerTests
 
             string expectedDatContents = @"[UNIT]
     <STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
-    <STRING>MESHFILE:staff_model_01.MESH
+    <STRING>MESHFILE:staff_model_01
     <STRING>BASEFILE:media\units\items\staves\BASE_STAFF_UNIQUE.DAT
     <STRING>UNIT_GUID:2013103151278660001
     <STRING>UNITTYPE:UNIQUE STAFF
@@ -122,7 +122,7 @@ namespace TL2_ItemDatMakerTests
         public void ShouldSetupLegendaryStaff()
         {
             string resource = @"MEDIA/MODELS/WEAPONS/_STAVES";
-            string meshFile = "staff_model_01.MESH";
+            string meshFile = "staff_model_01";
             UnitType unitType = UnitType.Staves;
             string name = "test4";
             int itemLevel = 2;
@@ -135,7 +135,7 @@ namespace TL2_ItemDatMakerTests
 
             string expectedDatContents = @"[UNIT]
     <STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
-    <STRING>MESHFILE:staff_model_01.MESH
+    <STRING>MESHFILE:staff_model_01
     <STRING>BASEFILE:media\units\items\staves\BASE_STAFF_UNIQUE.DAT
     <STRING>UNIT_GUID:2013103151278660001
     <STRING>UNITTYPE:LEGENDARY STAFF

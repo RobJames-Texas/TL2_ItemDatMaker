@@ -15,7 +15,7 @@ namespace TL2_ItemDatMaker.Models
                 throw new ArgumentException("Invalid Path");
             }
 
-            MeshFile = Path.GetFileName(fullPath);
+            MeshFile = Path.GetFileNameWithoutExtension(fullPath);
 
             if (string.IsNullOrWhiteSpace(MeshFile))
             {

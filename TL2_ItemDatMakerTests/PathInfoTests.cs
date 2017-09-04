@@ -15,7 +15,7 @@ namespace TL2_ItemDatMakerTests
             PathInfo pathInfo = new PathInfo(meshFile);
 
             string expectedItemType = "_STAVES";
-            string expectedMeshFile = "staff_model_01.MESH";
+            string expectedMeshFile = "staff_model_01";
             string expectedResource = @"MEDIA/MODELS/WEAPONS/_STAVES";
             string expectedDatPath = @".\MEDIA\UNITS\ITEMS\STAVES\TEST.DAT";
 

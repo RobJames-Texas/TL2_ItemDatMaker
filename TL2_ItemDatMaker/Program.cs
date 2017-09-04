@@ -3,6 +3,7 @@ using coreArgs.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using TL2_ItemDatMaker.Components;
 using TL2_ItemDatMaker.Models;
 
@@ -144,7 +145,7 @@ namespace TL2_ItemDatMaker
                 Console.WriteLine("\n\nUnit folder created.");
             }
 
-            File.WriteAllText(destination, unit.ToDat());
+            File.WriteAllText(destination, unit.ToDat(), Encoding.Unicode);
         }
     }
 }
