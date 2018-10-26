@@ -18,8 +18,8 @@ namespace TL2_ItemDatMakerTests
             IEnumerable<NgLevel> actual = NgLevel.Available(2);
             IEnumerable<NgLevel> actual2 = NgLevel.Available(50);
 
-            actual.ShouldAllBeEquivalentTo(expected);
-            actual2.ShouldAllBeEquivalentTo(expected);
+            actual.Should().BeEquivalentTo(expected);
+            actual2.Should().BeEquivalentTo(expected);
         }
 
         [TestMethod]
@@ -30,8 +30,8 @@ namespace TL2_ItemDatMakerTests
             IEnumerable<NgLevel> actual = NgLevel.Available(51);
             IEnumerable<NgLevel> actual2 = NgLevel.Available(80);
 
-            actual.ShouldAllBeEquivalentTo(expected);
-            actual2.ShouldAllBeEquivalentTo(expected);
+            actual.Should().BeEquivalentTo(expected);
+            actual2.Should().BeEquivalentTo(expected);
         }
 
         [TestMethod]
@@ -42,8 +42,8 @@ namespace TL2_ItemDatMakerTests
             IEnumerable<NgLevel> actual = NgLevel.Available(81);
             IEnumerable<NgLevel> actual2 = NgLevel.Available(100);
 
-            actual.ShouldAllBeEquivalentTo(expected);
-            actual2.ShouldAllBeEquivalentTo(expected);
+            actual.Should().BeEquivalentTo(expected);
+            actual2.Should().BeEquivalentTo(expected);
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace TL2_ItemDatMakerTests
 
             IEnumerable<NgLevel> actual = NgLevel.Available(101);
 
-            actual.ShouldAllBeEquivalentTo(expected);
+            actual.Should().BeEquivalentTo(expected);
         }
 
         [TestMethod]

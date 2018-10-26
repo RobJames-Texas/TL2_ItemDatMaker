@@ -67,18 +67,19 @@ namespace TL2_ItemDatMaker.Models
 
         public string ToDat()
         {
+            string tab = Constants.Tab;
             string template = $@"[UNIT]
-    <STRING>RESOURCEDIRECTORY:{ResourceDirectory}
-    <STRING>MESHFILE:{MeshFile}
-    <STRING>BASEFILE:{BaseFile}
-    <STRING>UNIT_GUID:{Guid.ToString()}
-    <STRING>UNITTYPE:{Rarity.Level.ToUpper()} {UnitType.Type}
-    <STRING>NAME:{Name}
-    <INTEGER>LEVEL:{Level}
-    <INTEGER>MINLEVEL:{MinLevel}
-    <INTEGER>MAXLEVEL:{MaxLevel}
+{tab}<STRING>RESOURCEDIRECTORY:{ResourceDirectory}
+{tab}<STRING>MESHFILE:{MeshFile}
+{tab}<STRING>BASEFILE:{BaseFile}
+{tab}<STRING>UNIT_GUID:{Guid.ToString()}
+{tab}<STRING>UNITTYPE:{Rarity.Level.ToUpper()} {UnitType.Type}
+{tab}<STRING>NAME:{Name}
+{tab}<INTEGER>LEVEL:{Level}
+{tab}<INTEGER>MINLEVEL:{MinLevel}
+{tab}<INTEGER>MAXLEVEL:{MaxLevel}
 ";
-            string levelRequired = LevelRequired.HasValue ? "    <INTEGER>LEVEL_REQUIRED:" + LevelRequired.Value + "\n" : string.Empty;
+            string levelRequired = LevelRequired.HasValue ? "\t<INTEGER>LEVEL_REQUIRED:" + LevelRequired.Value + "\n" : string.Empty;
 
             return template + levelRequired + "[/UNIT]";
         }

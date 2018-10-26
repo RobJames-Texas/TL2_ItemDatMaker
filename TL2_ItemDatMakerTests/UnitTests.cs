@@ -10,6 +10,8 @@ namespace TL2_ItemDatMakerTests
     [TestClass]
     public class UnitTests
     {
+        private string tab = TL2_ItemDatMaker.Constants.Tab;
+
         [TestMethod]
         public void ShouldSetupNormalStaff()
         {
@@ -25,16 +27,16 @@ namespace TL2_ItemDatMakerTests
             int expectedMinLevel = 0;
             int expectedMaxLevel = 5;
 
-            string expectedDatContents = @"[UNIT]
-    <STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
-    <STRING>MESHFILE:staff_model_01
-    <STRING>BASEFILE:media\units\items\staves\BASE_STAFF.DAT
-    <STRING>UNIT_GUID:2013103151278660001
-    <STRING>UNITTYPE:NORMAL STAFF
-    <STRING>NAME:test
-    <INTEGER>LEVEL:2
-    <INTEGER>MINLEVEL:0
-    <INTEGER>MAXLEVEL:5
+            string expectedDatContents = $@"[UNIT]
+{tab}<STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
+{tab}<STRING>MESHFILE:staff_model_01
+{tab}<STRING>BASEFILE:media\units\items\staves\BASE_STAFF.DAT
+{tab}<STRING>UNIT_GUID:2013103151278660001
+{tab}<STRING>UNITTYPE:NORMAL STAFF
+{tab}<STRING>NAME:test
+{tab}<INTEGER>LEVEL:2
+{tab}<INTEGER>MINLEVEL:0
+{tab}<INTEGER>MAXLEVEL:5
 [/UNIT]";
 
 
@@ -61,16 +63,16 @@ namespace TL2_ItemDatMakerTests
             int expectedMinLevel = 0;
             int expectedMaxLevel = 5;
 
-            string expectedDatContents = @"[UNIT]
-    <STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
-    <STRING>MESHFILE:staff_model_01
-    <STRING>BASEFILE:media\units\items\staves\BASE_STAFF_MAGIC.DAT
-    <STRING>UNIT_GUID:2013103151278660001
-    <STRING>UNITTYPE:MAGIC STAFF
-    <STRING>NAME:test2
-    <INTEGER>LEVEL:2
-    <INTEGER>MINLEVEL:0
-    <INTEGER>MAXLEVEL:5
+            string expectedDatContents = $@"[UNIT]
+{tab}<STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
+{tab}<STRING>MESHFILE:staff_model_01
+{tab}<STRING>BASEFILE:media\units\items\staves\BASE_STAFF_MAGIC.DAT
+{tab}<STRING>UNIT_GUID:2013103151278660001
+{tab}<STRING>UNITTYPE:MAGIC STAFF
+{tab}<STRING>NAME:test2
+{tab}<INTEGER>LEVEL:2
+{tab}<INTEGER>MINLEVEL:0
+{tab}<INTEGER>MAXLEVEL:5
 [/UNIT]";
 
 
@@ -97,16 +99,16 @@ namespace TL2_ItemDatMakerTests
             int expectedMinLevel = 0;
             int expectedMaxLevel = 5;
 
-            string expectedDatContents = @"[UNIT]
-    <STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
-    <STRING>MESHFILE:staff_model_01
-    <STRING>BASEFILE:media\units\items\staves\BASE_STAFF_UNIQUE.DAT
-    <STRING>UNIT_GUID:2013103151278660001
-    <STRING>UNITTYPE:UNIQUE STAFF
-    <STRING>NAME:test3
-    <INTEGER>LEVEL:2
-    <INTEGER>MINLEVEL:0
-    <INTEGER>MAXLEVEL:5
+            string expectedDatContents = $@"[UNIT]
+{tab}<STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
+{tab}<STRING>MESHFILE:staff_model_01
+{tab}<STRING>BASEFILE:media\units\items\staves\BASE_STAFF_UNIQUE.DAT
+{tab}<STRING>UNIT_GUID:2013103151278660001
+{tab}<STRING>UNITTYPE:UNIQUE STAFF
+{tab}<STRING>NAME:test3
+{tab}<INTEGER>LEVEL:2
+{tab}<INTEGER>MINLEVEL:0
+{tab}<INTEGER>MAXLEVEL:5
 [/UNIT]";
 
 
@@ -133,16 +135,16 @@ namespace TL2_ItemDatMakerTests
             int expectedMinLevel = 0;
             int expectedMaxLevel = 5;
 
-            string expectedDatContents = @"[UNIT]
-    <STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
-    <STRING>MESHFILE:staff_model_01
-    <STRING>BASEFILE:media\units\items\staves\BASE_STAFF_UNIQUE.DAT
-    <STRING>UNIT_GUID:2013103151278660001
-    <STRING>UNITTYPE:LEGENDARY STAFF
-    <STRING>NAME:test4
-    <INTEGER>LEVEL:2
-    <INTEGER>MINLEVEL:0
-    <INTEGER>MAXLEVEL:5
+            string expectedDatContents = $@"[UNIT]
+{tab}<STRING>RESOURCEDIRECTORY:MEDIA/MODELS/WEAPONS/_STAVES
+{tab}<STRING>MESHFILE:staff_model_01
+{tab}<STRING>BASEFILE:media\units\items\staves\BASE_STAFF_UNIQUE.DAT
+{tab}<STRING>UNIT_GUID:2013103151278660001
+{tab}<STRING>UNITTYPE:LEGENDARY STAFF
+{tab}<STRING>NAME:test4
+{tab}<INTEGER>LEVEL:2
+{tab}<INTEGER>MINLEVEL:0
+{tab}<INTEGER>MAXLEVEL:5
 [/UNIT]";
 
 
@@ -199,9 +201,9 @@ namespace TL2_ItemDatMakerTests
             Assert.IsNotNull(actualArray[3].LevelRequired);
 
 
-            string expectedBaseFile = @"    <STRING>BASEFILE:media\units\items\staves\test.DAT";
-            string expectedName = @"    <STRING>NAME:testNG+3";
-            string expectedRequiredLevel = @"    <INTEGER>LEVEL_REQUIRED:101";
+            string expectedBaseFile = $@"{tab}<STRING>BASEFILE:media\units\items\staves\test.DAT";
+            string expectedName = $@"{tab}<STRING>NAME:testNG+3";
+            string expectedRequiredLevel = $@"{tab}<INTEGER>LEVEL_REQUIRED:101";
 
             string actualDatContents = actualArray[3].ToDat();
 
