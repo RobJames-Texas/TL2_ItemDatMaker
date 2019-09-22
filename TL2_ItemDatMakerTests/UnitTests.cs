@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using TL2_ItemDatMaker.Components;
 using TL2_ItemDatMaker.Models;
@@ -159,7 +160,16 @@ namespace TL2_ItemDatMakerTests
         [TestMethod]
         public void ShouldGenerateAltClones()
         {
-            PathInfo pathInfo = new PathInfo(@".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH");
+            List<string> pathParts = new List<string>
+            {
+                ".",
+                "MEDIA",
+                "MODELS",
+                "WEAPONS",
+                "_STAVES",
+                "staff_model_01.MESH"
+            };
+            PathInfo pathInfo = new PathInfo(Path.Combine(pathParts.ToArray()));
 
             IEnumerable<Unit> actual = Unit.GenerateVariations(pathInfo, UnitType.Staves, Rarity.Normal, 3, "test", true, false);
 
@@ -181,7 +191,16 @@ namespace TL2_ItemDatMakerTests
         [TestMethod]
         public void ShouldGenerateNgClones()
         {
-            PathInfo pathInfo = new PathInfo(@".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH");
+            List<string> pathParts = new List<string>
+            {
+                ".",
+                "MEDIA",
+                "MODELS",
+                "WEAPONS",
+                "_STAVES",
+                "staff_model_01.MESH"
+            };
+            PathInfo pathInfo = new PathInfo(Path.Combine(pathParts.ToArray()));
 
             IEnumerable<Unit> actual = Unit.GenerateVariations(pathInfo, UnitType.Staves, Rarity.Normal, 3, "test", false, true);
 

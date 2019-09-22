@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using TL2_ItemDatMaker.Components;
 using TL2_ItemDatMaker.Models;
 
@@ -11,7 +13,17 @@ namespace TL2_ItemDatMakerTests
         [TestMethod]
         public void ShouldFillInWithStaffPropertiesWhenPathIsGood()
         {
-            string meshFile = @".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH";
+            // ".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH";
+            List<string> pathParts = new List<string>
+            {
+                ".",
+                "MEDIA",
+                "MODELS",
+                "WEAPONS",
+                "_STAVES",
+                "staff_model_01.MESH"
+            };
+            string meshFile = Path.Combine(pathParts.ToArray());
             PathInfo pathInfo = new PathInfo(meshFile);
 
             string expectedItemType = "_STAVES";
