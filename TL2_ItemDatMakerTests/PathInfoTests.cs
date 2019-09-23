@@ -29,7 +29,17 @@ namespace TL2_ItemDatMakerTests
             string expectedItemType = "_STAVES";
             string expectedMeshFile = "staff_model_01";
             string expectedResource = @"MEDIA/MODELS/WEAPONS/_STAVES";
-            string expectedDatPath = @".\MEDIA\UNITS\ITEMS\STAVES\TEST.DAT";
+
+            List<string> datPathParts = new List<string>
+            {
+                ".",
+                "MEDIA",
+                "UNITS",
+                "ITEMS",
+                "STAVES",
+                "TEST.DAT"
+            };
+            string expectedDatPath = Path.Combine(datPathParts.ToArray());
 
             Assert.IsNotNull(pathInfo);
             Assert.AreEqual(expectedItemType, pathInfo.ItemType);

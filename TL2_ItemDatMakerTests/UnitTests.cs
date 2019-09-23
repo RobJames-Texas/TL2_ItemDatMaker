@@ -184,8 +184,8 @@ namespace TL2_ItemDatMakerTests
 
             string datPath = pathInfo.CreateFullDatPath(actualArray[0].UnitType, actualArray[0].Name);
 
-            datPath.Should().Contain(actualArray[1].BaseFile.ToUpper());
-            datPath.Should().Contain(actualArray[2].BaseFile.ToUpper());
+            datPath.Should().Contain(Path.Combine(actualArray[1].BaseFile.ToUpper().Split("\\")));
+            datPath.Should().Contain(Path.Combine(actualArray[2].BaseFile.ToUpper().Split("\\")));
         }
 
         [TestMethod]
@@ -232,9 +232,9 @@ namespace TL2_ItemDatMakerTests
 
             string datPath = pathInfo.CreateFullDatPath(actualArray[0].UnitType, actualArray[0].Name);
 
-            datPath.Should().Contain(actualArray[1].BaseFile.ToUpper());
-            datPath.Should().Contain(actualArray[2].BaseFile.ToUpper());
-            datPath.Should().Contain(actualArray[3].BaseFile.ToUpper());
+            datPath.Should().Contain(Path.Combine(actualArray[1].BaseFile.ToUpper().Split("\\")));
+            datPath.Should().Contain(Path.Combine(actualArray[2].BaseFile.ToUpper().Split("\\")));
+            datPath.Should().Contain(Path.Combine(actualArray[3].BaseFile.ToUpper().Split("\\")));
         }
 
         [TestMethod]
