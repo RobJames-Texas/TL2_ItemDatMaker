@@ -240,7 +240,16 @@ namespace TL2_ItemDatMakerTests
         [TestMethod]
         public void ShouldGenerateAltAndNgClones()
         {
-            PathInfo pathInfo = new PathInfo(@".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH");
+            List<string> pathParts = new List<string>
+            {
+                ".",
+                "MEDIA",
+                "MODELS",
+                "WEAPONS",
+                "_STAVES",
+                "staff_model_01.MESH"
+            };
+            PathInfo pathInfo = new PathInfo(Path.Combine(pathParts.ToArray()));
 
             IEnumerable<Unit> actual = Unit.GenerateVariations(pathInfo, UnitType.Staves, Rarity.Normal, 3, "test", true, true);
 
