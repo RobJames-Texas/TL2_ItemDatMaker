@@ -1,5 +1,5 @@
 @ECHO OFF
-dotnet test --logger "trx;LogFileName=TestResults.xml" --results-directory ./BuildReports/UnitTests /p:CollectCoverage=true /p:CoverletOutput=BuildReports\Coverage\ /p:CoverletOutputFormat=cobertura /p:Threshold=10 /p:ThresholdStat=total
+dotnet test --logger "trx;LogFileName=TestResults.xml" --results-directory ./BuildReports/UnitTests /p:CollectCoverage=true /p:CoverletOutput=BuildReports\Coverage\ /p:CoverletOutputFormat=cobertura /p:Threshold=70 /p:ThresholdStat=total
 
 FOR /F %%D IN ('dir /b /a:d /o:-n %userprofile%\.nuget\packages\reportgenerator\*') DO (
     set directory=%%D
