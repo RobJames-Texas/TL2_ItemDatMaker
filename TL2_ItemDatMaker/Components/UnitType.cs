@@ -58,12 +58,12 @@ namespace TL2_ItemDatMaker.Components
 
         public static UnitType GetByMeshFolder(string meshFolder)
         {
-            return UnitType.List().Where(u => u.MeshFolder == meshFolder.ToUpper()).FirstOrDefault();
+            return UnitType.List().Where(u => u.MeshFolder == meshFolder.ToUpperInvariant()).FirstOrDefault();
         }
 
         public static IEnumerable<UnitType> List()
         {
-            return new UnitType[]
+            return new []
             {
                 Axes,
                 Bows,

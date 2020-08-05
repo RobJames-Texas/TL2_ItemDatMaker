@@ -13,7 +13,7 @@ namespace TL2_ItemDatMakerTests
         [TestMethod]
         public void ShouldFillInWithStaffPropertiesWhenPathIsGood()
         {
-            // ".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH";
+            // Example: ".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH"
             List<string> pathParts = new List<string>
             {
                 ".",

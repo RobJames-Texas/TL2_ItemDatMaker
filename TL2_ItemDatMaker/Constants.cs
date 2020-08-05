@@ -2,6 +2,6 @@
 {
     public static class Constants
     {
-        public static string Tab = $@"{"\t"}";
+        public readonly static string Tab = $@"{"\t"}";
     }
 }
