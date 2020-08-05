@@ -11,7 +11,7 @@ namespace TL2_ItemDatMakerTests
     [TestClass]
     public class UnitTests
     {
-        private string tab = TL2_ItemDatMaker.Constants.Tab;
+        private readonly string tab = TL2_ItemDatMaker.Constants.Tab;
 
         [TestMethod]
         public void ShouldSetupNormalStaff()

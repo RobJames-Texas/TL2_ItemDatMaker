@@ -11,7 +11,7 @@ namespace TL2_ItemDatMaker
 {
     class Program
     {
-        static void Main(string[] args)
+        protected static void Main(string[] args)
         {
             Options arguments = null;
 
@@ -86,11 +86,11 @@ namespace TL2_ItemDatMaker
             }
 
             Console.WriteLine("Make Alt Clones. (y/n)?");
-            arguments.AltClones = Console.ReadKey().KeyChar.ToString().ToLower() == "y";
+            arguments.AltClones = Console.ReadKey().KeyChar.ToString().ToLowerInvariant() == "y";
             Console.WriteLine();
 
             Console.WriteLine("Make NG Clones. (y/n)?");
-            arguments.NgClones = Console.ReadKey().KeyChar.ToString().ToLower() == "y";
+            arguments.NgClones = Console.ReadKey().KeyChar.ToString().ToLowerInvariant() == "y";
             Console.WriteLine();
 
             return arguments;
