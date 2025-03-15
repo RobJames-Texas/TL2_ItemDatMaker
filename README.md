@@ -32,6 +32,6 @@ Either with the options below, *or* drag the mesh file in your mod folder over t
 
 Release notes:
 
-* v0.9.2 -- Changed spaces to tabs in output DAT files. Updated nuget packages and unit tests. Updated to dot net core 2.1.
+* v0.9.2 -- Changed spaces to tabs in output DAT files. Updated NuGet packages and unit tests. Updated to dot net core 2.1.
 * v0.9.1 -- Corrected output file encoding. Removed extension from the string for the meshfile.
 * v0.9.0 -- Initial release.

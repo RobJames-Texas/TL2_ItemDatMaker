@@ -1,7 +1,6 @@
 ﻿using coreArgs;
 using coreArgs.Model;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using TL2_ItemDatMaker.Components;
@@ -58,8 +57,10 @@ namespace TL2_ItemDatMaker
 
         private static Options InteractiveOptions(string meshFile)
         {
-            Options arguments = new Options();
-            arguments.MeshFile = meshFile;
+            var arguments = new Options
+            {
+                MeshFile = meshFile
+            };
 
             while (string.IsNullOrWhiteSpace(arguments.ItemRarity))
             {
@@ -79,18 +80,17 @@ namespace TL2_ItemDatMaker
             while (arguments.ItemLevel < 2)
             {
                 Console.WriteLine("Base level of the item. Minimum of 2.");
-                int level = 0;
-                int.TryParse(Console.ReadLine(), out level);
+                _ = int.TryParse(Console.ReadLine(), out int level);
                 arguments.ItemLevel = level;
                 Console.WriteLine();
             }
 
             Console.WriteLine("Make Alt Clones. (y/n)?");
-            arguments.AltClones = Console.ReadKey().KeyChar.ToString().ToLowerInvariant() == "y";
+            arguments.AltClones = Console.ReadKey().KeyChar.ToString().Equals("y", StringComparison.InvariantCultureIgnoreCase);
             Console.WriteLine();
 
             Console.WriteLine("Make NG Clones. (y/n)?");
-            arguments.NgClones = Console.ReadKey().KeyChar.ToString().ToLowerInvariant() == "y";
+            arguments.NgClones = Console.ReadKey().KeyChar.ToString().Equals("y", StringComparison.InvariantCultureIgnoreCase);
             Console.WriteLine();
 
             return arguments;
@@ -98,25 +98,15 @@ namespace TL2_ItemDatMaker
 
         private static void CreateUnits(Options arguments)
         {
-            PathInfo pathInfo = new PathInfo(arguments.MeshFile);
+            var pathInfo = new PathInfo(arguments.MeshFile);
 
-            UnitType unitType = UnitType.GetByMeshFolder(pathInfo.ItemType);
+            var unitType = UnitType.GetByMeshFolder(pathInfo.ItemType) ?? throw new ArgumentException("Invalid UnitType detected");
 
-            Rarity rarity = Rarity.GetByLevel(arguments.ItemRarity);
-
-            if (rarity == null)
-            {
-                throw new ArgumentException("Invalid Rarity Level.");
-            }
-
-            if (unitType == null)
-            {
-                throw new ArgumentException("Invalid UnitType detected.");
-            }
+            var rarity = Rarity.GetByLevel(arguments.ItemRarity) ?? throw new ArgumentException("Invalid Rarity Level.");
 
             string name = ItemNameGenerator.Create(unitType, rarity, arguments.NameTag, arguments.ItemLevel);
 
-            IEnumerable<Unit> units = Unit.GenerateVariations(pathInfo, unitType, rarity, arguments.ItemLevel, name, arguments.AltClones, arguments.NgClones);
+            var units = Unit.GenerateVariations(pathInfo, unitType, rarity, arguments.ItemLevel, name, arguments.AltClones, arguments.NgClones);
 
             foreach (Unit unit in units)
             {
@@ -136,7 +126,7 @@ namespace TL2_ItemDatMaker
             if (!Directory.Exists(folder))
             {
                 Console.WriteLine("\n\nDestination folder does not exist.  Create it now? (y/n)");
-                if (Console.ReadKey().KeyChar.ToString().ToLower() != "y")
+                if (!Console.ReadKey().KeyChar.ToString().Equals("y", StringComparison.CurrentCultureIgnoreCase))
                 {
                     Console.WriteLine("\n\nCreation of unit file skipped.");
                     return;

@@ -51,12 +51,12 @@ namespace TL2_ItemDatMaker.Components
 
         private static IEnumerable<NgLevel> List()
         {
-            return new NgLevel[]
-            {
+            return
+            [
                 One,
                 Two,
                 Three
-            };
+            ];
         }
 
     }

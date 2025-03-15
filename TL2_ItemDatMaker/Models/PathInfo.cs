@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TL2_ItemDatMaker.Components;
@@ -22,11 +21,11 @@ namespace TL2_ItemDatMaker.Models
                 throw new ArgumentException("Invalid File");
             }
 
-            List<string> folders = Path.GetDirectoryName(fullPath).ToUpper().Split(Path.DirectorySeparatorChar).ToList();
-            int index = folders.IndexOf("MEDIA");
+            var folders = Path.GetDirectoryName(fullPath).ToUpper().Split(Path.DirectorySeparatorChar).ToList();
+            var index = folders.IndexOf("MEDIA");
 
-            Root = String.Join(Path.DirectorySeparatorChar.ToString(), folders.Take(index));
-            Resource = String.Join("/", folders.Skip(index));
+            Root = string.Join(Path.DirectorySeparatorChar.ToString(), folders.Take(index));
+            Resource = string.Join("/", folders.Skip(index));
 
             ItemType = folders.Last();
 
@@ -35,12 +34,12 @@ namespace TL2_ItemDatMaker.Models
                 throw new ArgumentException("Invalid Path");
             }
 
-            if (UnitType.List().Where(u => u.MeshFolder == ItemType).Count() == 0)
+            if (!UnitType.List().Any(u => u.MeshFolder == ItemType))
             {
                 throw new ArgumentException("Invalid Item Type Path");
             }
 
-            BaseDatPath = string.Join(Path.DirectorySeparatorChar.ToString(), new string[] { "MEDIA", "UNITS", "ITEMS" });
+            BaseDatPath = string.Join(Path.DirectorySeparatorChar.ToString(), ["MEDIA", "UNITS", "ITEMS"]);
 
         }
 
@@ -56,7 +55,7 @@ namespace TL2_ItemDatMaker.Models
 
         public string CreateFullDatPath(UnitType unitType, string name)
         {
-            string[] pieces = new string[] { Root, BaseDatPath, unitType.UnitFolder, name + ".DAT" };
+            string[] pieces = [Root, BaseDatPath, unitType.UnitFolder, name + ".DAT"];
             return string.Join(Path.DirectorySeparatorChar.ToString(), pieces).ToUpper();
         }
     }

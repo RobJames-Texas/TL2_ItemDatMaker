@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Copyright>Rob James</Copyright>
     <PackageProjectUrl>https://github.com/RobJames-Texas/TL2_ItemDatMaker</PackageProjectUrl>
     <RepositoryUrl>https://github.com/RobJames-Texas/TL2_ItemDatMaker</RepositoryUrl>
@@ -13,16 +12,14 @@
     <PackageReleaseNotes>Changed DAT files to have tabs instead of spaces.
 </PackageReleaseNotes>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="coreArgs" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="4.3.2" />
   </ItemGroup>
-
   <ItemGroup>
     <None Update="Rita_128px.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
 </Project>

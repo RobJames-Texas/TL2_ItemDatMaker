@@ -63,8 +63,8 @@ namespace TL2_ItemDatMaker.Components
 
         public static IEnumerable<UnitType> List()
         {
-            return new UnitType[]
-            {
+            return
+            [
                 Axes,
                 Bows,
                 Cannons,
@@ -81,7 +81,7 @@ namespace TL2_ItemDatMaker.Components
                 Staves,
                 Swords,
                 Wands
-            };
+            ];
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace TL2_ItemDatMaker.Components
@@ -19,33 +18,33 @@ namespace TL2_ItemDatMaker.Components
             BaseSuffix = baseSuffix;
         }
 
-        public readonly static Rarity Normal = new Rarity("Normal", "n", "");
+        public readonly static Rarity Normal = new("Normal", "n", "");
 
-        public readonly static Rarity Magic = new Rarity("Magic", "m", "_magic");
+        public readonly static Rarity Magic = new("Magic", "m", "_magic");
 
-        public readonly static Rarity Unique = new Rarity("Unique", "u", "_unique");
+        public readonly static Rarity Unique = new("Unique", "u", "_unique");
 
-        public readonly static Rarity Legendary = new Rarity("Legendary", "l", "_unique");
+        public readonly static Rarity Legendary = new("Legendary", "l", "_unique");
 
         public static Rarity GetByLevel(string level)
         {
-            return Rarity.List().Where(r => r.Level.ToLower() == level.ToLower()).FirstOrDefault();
+            return List().Where(r => r.Level.Equals(level, System.StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
         }
 
         public static Rarity GetByLetter(string letter)
         {
-            return Rarity.List().Where(r => r.NameLetter.ToLower() == letter.ToLower()).FirstOrDefault();
+            return List().Where(r => r.NameLetter.Equals(letter, System.StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
         }
 
         public static IEnumerable<Rarity> List()
         {
-            return new Rarity[]
-            {
+            return
+            [
                 Normal,
                 Magic,
                 Unique,
                 Legendary
-            };
+            ];
         }
     }
 }
