@@ -1,7 +1,9 @@
 ﻿using coreArgs.Attributes;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TL2_ItemDatMaker.Models
 {
+    [ExcludeFromCodeCoverage] // No need to test property get and set.
     public class Options
     {
         [Option('m', "3dmodel", "Meshfile and full path.", true)]

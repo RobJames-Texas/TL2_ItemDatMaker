@@ -7,5 +7,5 @@ FOR /F %%D IN ('dir /b /a:d /o:-n %userprofile%\.nuget\packages\reportgenerator\
 )
 
 :report
-dotnet %userprofile%\.nuget\packages\reportgenerator\%directory%\tools\netcoreapp2.1\ReportGenerator.dll "-reports:BuildReports\Coverage\coverage.cobertura.xml" "-targetdir:BuildReports\Coverage" -reporttypes:HTML;HTMLSummary
+dotnet %userprofile%\.nuget\packages\reportgenerator\%directory%\tools\net8.0\ReportGenerator.dll "-reports:BuildReports\Coverage\coverage.cobertura.xml" "-targetdir:BuildReports\Coverage" -reporttypes:HTML;HTMLSummary
 start BuildReports\Coverage\index.htm

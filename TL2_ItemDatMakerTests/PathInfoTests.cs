@@ -14,32 +14,32 @@ namespace TL2_ItemDatMakerTests
         public void ShouldFillInWithStaffPropertiesWhenPathIsGood()
         {
             // ".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH";
-            List<string> pathParts = new List<string>
-            {
+            List<string> pathParts =
+            [
                 ".",
                 "MEDIA",
                 "MODELS",
                 "WEAPONS",
                 "_STAVES",
                 "staff_model_01.MESH"
-            };
-            string meshFile = Path.Combine(pathParts.ToArray());
-            PathInfo pathInfo = new PathInfo(meshFile);
+            ];
+            string meshFile = Path.Combine([.. pathParts]);
+            var pathInfo = new PathInfo(meshFile);
 
             string expectedItemType = "_STAVES";
             string expectedMeshFile = "staff_model_01";
             string expectedResource = @"MEDIA/MODELS/WEAPONS/_STAVES";
 
-            List<string> datPathParts = new List<string>
-            {
+            List<string> datPathParts =
+            [
                 ".",
                 "MEDIA",
                 "UNITS",
                 "ITEMS",
                 "STAVES",
                 "TEST.DAT"
-            };
-            string expectedDatPath = Path.Combine(datPathParts.ToArray());
+            ];
+            string expectedDatPath = Path.Combine([.. datPathParts]);
 
             Assert.IsNotNull(pathInfo);
             Assert.AreEqual(expectedItemType, pathInfo.ItemType);
@@ -49,27 +49,30 @@ namespace TL2_ItemDatMakerTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ShouldFailOnNoPath()
         {
             string meshFile = @"";
-            PathInfo pathInfo = new PathInfo(meshFile);
+            _ = Assert.ThrowsExactly<ArgumentException>(() => new PathInfo(meshFile));
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        public void ShouldFailOnNoMesh()
+        {
+            _ = Assert.ThrowsExactly<ArgumentException>(() => new PathInfo(@".nope"));
+        }
+
+        [TestMethod]
         public void ShouldFailOnFileOnly()
         {
             string meshFile = @"staff_model_01.MESH";
-            PathInfo pathInfo = new PathInfo(meshFile);
+            _ = Assert.ThrowsExactly<ArgumentException>(() => new PathInfo(meshFile));
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void ShouldFailOnBadItemType()
         {
             string meshFile = @".\MEDIA\MODELS\WEAPONS\_JUNK\staff_model_01.MESH";
-            PathInfo pathInfo = new PathInfo(meshFile);
+            _ = Assert.ThrowsExactly<ArgumentException>(() => new PathInfo(meshFile));
         }
     }
 }

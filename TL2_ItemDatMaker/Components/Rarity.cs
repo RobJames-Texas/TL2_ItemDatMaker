@@ -28,12 +28,12 @@ namespace TL2_ItemDatMaker.Components
 
         public static Rarity GetByLevel(string level)
         {
-            return List().Where(r => r.Level.Equals(level, System.StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            return List().FirstOrDefault(r => r.Level.Equals(level, System.StringComparison.CurrentCultureIgnoreCase));
         }
 
         public static Rarity GetByLetter(string letter)
         {
-            return List().Where(r => r.NameLetter.Equals(letter, System.StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            return List().FirstOrDefault(r => r.NameLetter.Equals(letter, System.StringComparison.CurrentCultureIgnoreCase));
         }
 
         public static IEnumerable<Rarity> List()
