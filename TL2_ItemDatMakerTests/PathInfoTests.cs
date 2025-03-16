@@ -13,17 +13,7 @@ namespace TL2_ItemDatMakerTests
         [TestMethod]
         public void ShouldFillInWithStaffPropertiesWhenPathIsGood()
         {
-            // ".\MEDIA\MODELS\WEAPONS\_STAVES\staff_model_01.MESH";
-            List<string> pathParts =
-            [
-                ".",
-                "MEDIA",
-                "MODELS",
-                "WEAPONS",
-                "_STAVES",
-                "staff_model_01.MESH"
-            ];
-            string meshFile = Path.Combine([.. pathParts]);
+            var meshFile = TestHelpers.BuildGoodMeshPath();
             var pathInfo = new PathInfo(meshFile);
 
             string expectedItemType = "_STAVES";
