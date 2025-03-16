@@ -10,7 +10,7 @@ v0.9.3
 
 Releases: https://github.com/RobJames-Texas/TL2_ItemDatMaker/releases
 
-Written in dot net core with Visual Studio 2017.
+Written in dot net 8 with Visual Studio 2022.
 
 ### Usage:
 
