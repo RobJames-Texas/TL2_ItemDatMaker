@@ -22,7 +22,7 @@ namespace TL2_ItemDatMaker.Models
                 throw new ArgumentException("Invalid File");
             }
 
-            List<string> folders = Path.GetDirectoryName(fullPath).ToUpper().Split(Path.DirectorySeparatorChar).ToList();
+            List<string> folders = Path.GetDirectoryName(fullPath).ToUpperInvariant().Split(Path.DirectorySeparatorChar).ToList();
             int index = folders.IndexOf("MEDIA");
 
             Root = String.Join(Path.DirectorySeparatorChar.ToString(), folders.Take(index));
@@ -40,7 +40,7 @@ namespace TL2_ItemDatMaker.Models
                 throw new ArgumentException("Invalid Item Type Path");
             }
 
-            BaseDatPath = string.Join(Path.DirectorySeparatorChar.ToString(), new string[] { "MEDIA", "UNITS", "ITEMS" });
+            BaseDatPath = string.Join(Path.DirectorySeparatorChar.ToString(), new [] { "MEDIA", "UNITS", "ITEMS" });
 
         }
 
